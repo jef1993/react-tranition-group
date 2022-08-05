@@ -81,18 +81,22 @@
       &-enter {
         opacity: 0;
         transform: translateX(-100%);
+        max-height: 0;
       }
       &-enter-active {
         opacity: 1;
         transform: translateX(0);
+        max-height: 30rem;
       }
       &-exit {
         opacity: 1;
         transform: translateX(0);
+        max-height: 30rem;
       }
       &-exit-active {
         opacity: 0;
         transform: translateX(100%);
+        max-height: 0;
       }
     }
   }
