@@ -1,0 +1,65 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 300;
+}
+
+.App {
+  height: auto;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+button {
+  width: 100%;
+  //   max-width: 16rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+
+  &:where(.main-btn) {
+    font-size: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: rgb(66, 140, 209);
+    color: white;
+    border: none;
+  }
+
+  &:where(.sub-btn) {
+    max-width: 20rem;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 2rem 0;
+}
+
+p {
+  padding: 1rem 0;
+}
