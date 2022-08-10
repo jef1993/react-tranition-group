@@ -12,34 +12,34 @@ const BtnSelect = () => {
   const [showModal, setShowModal] = useState(false);
 
   const addItemHandler = () => {
-    setItems((prev) => {
-      //   if (prev.length === 0) return [1];
-      //   const maxNum = prev.reduce((a, c) => (a >= c ? a : c));
+    setItems((arr) => {
+      //   if (arr.length === 0) return [1];
+      //   const maxNum = arr.reduce((a, c) => (a >= c ? a : c));
       //   const reformedArr = Array(maxNum)
       //     .fill("")
-      //     .map((_, i) => (prev.includes(i + 1) ? i + 1 : ""));
+      //     .map((_, i) => (arr.includes(i + 1) ? i + 1 : ""));
       //   const firstStrLocation = reformedArr.indexOf("");
       //   firstStrLocation >= 0 &&
       //     reformedArr.splice(firstStrLocation, 1, firstStrLocation + 1);
-      //   if (reformedArr.join("") === prev.join(""))
-      //     reformedArr.push(prev.length + 1);
+      //   if (reformedArr.join("") === arr.join(""))
+      //     reformedArr.push(arr.length + 1);
       //   return reformedArr;
 
       let i = 0;
-      if (prev.length === 0) return [1];
+      if (arr.length === 0) return [1];
 
-      while (i < prev.length) {
-        const arrCopy = prev.slice(0);
-        if (i + 1 < prev[0] && i === 0) {
+      while (i < arr.length) {
+        const arrCopy = arr.slice(0);
+        if (arr[0] > 1 && i === 0) {
           arrCopy.splice(0, 0, 1);
           return arrCopy;
         }
-        if (prev[i + 1] > prev[i] + 1) {
-          arrCopy.splice(i + 1, 0, prev[i] + 1);
+        if (arr[i + 1] > arr[i] + 1) {
+          arrCopy.splice(i + 1, 0, arr[i] + 1);
           return arrCopy;
         }
-        if (i === prev.length - 1) {
-          arrCopy.push(prev[prev.length - 1] + 1);
+        if (i === arr.length - 1) {
+          arrCopy.push(arr[arr.length - 1] + 1);
           return arrCopy;
         }
         i++;
@@ -106,33 +106,21 @@ const BtnSelect = () => {
           Add Item
         </button>
         <p>Click Item to Remove</p>
-        <ul className="btn-select__list">
-          <TransitionGroup className="trans-ul">
-            {items.length > 0 &&
-              items.map((item, i) => (
-                /* <BtnItem
-                index={i}
-                key={i}
-                item={item}
-                onRemove={() => {
-                  removeItemHandler(item);
-                }}
-              /> */
-
-                <CSSTransition classNames="trans-item" timeout={300} key={item}>
-                  <li
-                    key={i}
-                    className="btn-select__item"
-                    onClick={() => {
-                      removeItemHandler(i);
-                    }}
-                  >
-                    <button className="sub-btn">{item}</button>
-                  </li>
-                </CSSTransition>
-              ))}
-          </TransitionGroup>
-        </ul>
+        <TransitionGroup className="btn-select__list" component="ul">
+          {items.length > 0 &&
+            items.map((item, i) => (
+              <CSSTransition classNames="trans-item" timeout={300} key={item}>
+                <li
+                  className="btn-select__item"
+                  onClick={() => {
+                    removeItemHandler(i);
+                  }}
+                >
+                  <button className="sub-btn">{item}</button>
+                </li>
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
       </div>
     </main>
   );
